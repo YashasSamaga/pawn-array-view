@@ -1,0 +1,13 @@
+native test_cell_0(arr[], sz = sizeof(arr));
+native test_cell_256(arr[256]);
+native test_cell_0_0(arr[][], sz_major = sizeof(arr), sz_minor = sizeof(arr[]));
+native test_cell_0_128(arr[][128], sz_major = sizeof(arr));
+native test_cell_256_128(arr[256][128]);
+native test_cell_64_0(arr[64][], sz_minor = sizeof(arr[]));
+native test_cell_0_0_0(arr[][][], sz_major = sizeof(arr), sz_middle = sizeof(arr[]), sz_minor = sizeof(arr[][]));
+native test_cell_0_0_128(arr[][][128], sz_major = sizeof(arr), sz_middle = sizeof(arr[]));
+native test_cell_0_128_0(arr[][128][], sz_major = sizeof(arr), sz_minor = sizeof(arr[][]));
+native test_cell_0_64_96(arr[][64][96], sz_major = sizeof(arr));
+native test_cell_16_0_0(arr[16][][], sz_middle = sizeof(arr[]), sz_minor = sizeof(arr[][]));
+native test_cell_16_0_48(arr[16][][48], sz_middle = sizeof(arr[]));
+native test_cell_20_30_50(arr[20][30][50]);
