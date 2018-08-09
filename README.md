@@ -17,21 +17,23 @@ The `pawn::array_view` takes two template parameters: type of the values in the 
 
 ### Constructors
 
+`pawn::array_view() noexcept;`
+
 `pawn::array_view(cell *phys_addr) noexcept;`  
 
 The `phys_addr` parameter takes the address of the indirection table (begining of the multidimensional array). In case of single dimensional arrays, it takes the address to the begining of the array data.
 
 ### Member types
 
-member type | definition                    | description
------------ | ----------------------------- | -------------
-value_type  | array_view<T, dims - 1> or T  | 
-reference   | value_type&                   |
-const_reference | const reference           |
-pointer         | value_type*               |
-const_pointer   | const pointer             |
-size_type       | int                       |
-difference_type | std::ptrdiff_t            |
+member type |
+----------- |
+value_type  |
+reference   |
+const_reference |
+pointer         |
+const_pointer   |
+size_type       |
+difference_type |
 
 ### Member functions
 
