@@ -11,9 +11,18 @@ namespace sample::natives {
         amx_GetAddr(amx, params[1], &phys_addr);
         assert(phys_addr != NULL);
 
-        pawn::array_view<cell, 1> arr(phys_addr);
+        const pawn::array_view<cell, 1> arr(phys_addr);
         for (int i = 0; i < params[2]; i++) {
             assert(arr[i] == phys_addr[i]);
+        }
+        
+        pawn::array_view<cell, 1> arr2(phys_addr);
+        for (int i = 0; i < params[2]; i++) {
+            arr2[i] = i;
+        }
+
+        for (int i = 0; i < params[2]; i++) {
+            assert(arr[i] == i && phys_addr[i] == i);
         }
 	    return 1;
     }
@@ -25,9 +34,18 @@ namespace sample::natives {
         amx_GetAddr(amx, params[1], &phys_addr);
         assert(phys_addr != NULL);
 
-        pawn::array_view<cell, 1> arr(phys_addr);
+        const pawn::array_view<cell, 1> arr(phys_addr);
         for (int i = 0; i < 256; i++) {
             assert(arr[i] == phys_addr[i]);
+        }
+
+        pawn::array_view<cell, 1> arr2(phys_addr);
+        for (int i = 0; i < 256; i++) {
+            arr2[i] = i;
+        }
+
+        for (int i = 0; i < 256; i++) {
+            assert(arr[i] == i && phys_addr[i] == i);
         }
 	    return 1;
     }
@@ -39,11 +57,26 @@ namespace sample::natives {
         amx_GetAddr(amx, params[1], &phys_addr);
         assert(phys_addr != NULL);
 
-        pawn::array_view<cell, 2> arr(phys_addr);
+        const pawn::array_view<cell, 2> arr(phys_addr);
         for (int i = 0; i < params[2]; i++) {
             cell *subaddr = &phys_addr[i] + phys_addr[i]/sizeof(cell);
             for (int j = 0; j < params[3]; j++) {
                 assert(arr[i][j] == subaddr[j]);
+            }
+        }
+
+        pawn::array_view<cell, 2> arr2(phys_addr);
+        for (int i = 0; i < params[2]; i++) {
+            cell *subaddr = &phys_addr[i] + phys_addr[i]/sizeof(cell);
+            for (int j = 0; j < params[3]; j++) {
+                arr2[i][j] = i * j;
+            }
+        }
+
+        for (int i = 0; i < params[2]; i++) {
+            cell *subaddr = &phys_addr[i] + phys_addr[i]/sizeof(cell);
+            for (int j = 0; j < params[3]; j++) {
+                assert(arr[i][j] == i * j && subaddr[j] == i * j);
             }
         }
 	    return 1;
@@ -234,6 +267,26 @@ namespace sample::natives {
                 cell *subsubaddr = &subaddr[j] + subaddr[j]/sizeof(cell);
                 for (int k = 0; k < 50; k++) {
                     assert(arr[i][j][k] == subsubaddr[k]);
+                }
+            }
+        }
+	    return 1;
+    }
+
+    //native test_float_20_30_50(Float:arr[20][30][50]);
+    cell AMX_NATIVE_CALL test_float_20_30_50(AMX* amx, cell* params)
+    {
+        cell *phys_addr;
+        amx_GetAddr(amx, params[1], &phys_addr);
+        assert(phys_addr != NULL);
+
+        pawn::array_view<float, 3> arr(phys_addr);
+        for (int i = 0; i < 20; i++) {
+            cell *subaddr = &phys_addr[i] + phys_addr[i]/sizeof(cell);
+            for (int j = 0; j < 30; j++) {
+                cell *subsubaddr = &subaddr[j] + subaddr[j]/sizeof(cell);
+                for (int k = 0; k < 50; k++) {
+                    assert(arr[i][j][k] == amx_ctof(subsubaddr[k]));
                 }
             }
         }

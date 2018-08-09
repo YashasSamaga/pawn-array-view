@@ -14,4 +14,5 @@ namespace sample::natives {
     cell AMX_NATIVE_CALL test_cell_16_0_0(AMX* amx, cell* params);
     cell AMX_NATIVE_CALL test_cell_16_0_48(AMX* amx, cell* params);
     cell AMX_NATIVE_CALL test_cell_20_30_50(AMX* amx, cell* params);
+    cell AMX_NATIVE_CALL test_float_20_30_50(AMX* amx, cell* params);
 }

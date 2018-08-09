@@ -11,3 +11,4 @@ native test_cell_0_64_96(arr[][64][96], sz_major = sizeof(arr));
 native test_cell_16_0_0(arr[16][][], sz_middle = sizeof(arr[]), sz_minor = sizeof(arr[][]));
 native test_cell_16_0_48(arr[16][][48], sz_middle = sizeof(arr[]));
 native test_cell_20_30_50(arr[20][30][50]);
+native test_float_20_30_50(Float:arr[20][30][50]);

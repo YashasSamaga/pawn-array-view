@@ -43,6 +43,7 @@ PLUGIN_EXPORT int PLUGIN_CALL AmxLoad(AMX *amx)
         {"test_cell_16_0_0", sample::natives::test_cell_16_0_0 },
         {"test_cell_16_0_48", sample::natives::test_cell_16_0_48 },
         {"test_cell_20_30_50", sample::natives::test_cell_20_30_50 },
+        {"test_float_20_30_50", sample::natives::test_float_20_30_50 },
         {0, 0}
     };
     return amx_Register(amx, natives, -1);

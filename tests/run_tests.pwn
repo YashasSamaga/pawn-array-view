@@ -74,6 +74,12 @@ main () {
  	    for(new j = 0; j < sizeof(arr13[]); j++)
  	        for(new k = 0; k < sizeof(arr13[][]); k++)
 	    		arr13[i][j][k] = random(cellmax);
+
+	new Float:arr14[20][30][50];
+	for(new i = 0; i < sizeof(arr14); i++)
+ 	    for(new j = 0; j < sizeof(arr14[]); j++)
+ 	        for(new k = 0; k < sizeof(arr14[][]); k++)
+	    		arr14[i][j][k] = float(random(cellmax));
 	    		
 	test_cell_0(arr1);
 	test_cell_256(arr2);
@@ -88,5 +94,5 @@ main () {
     test_cell_16_0_0(arr11);
     test_cell_16_0_48(arr12);
     test_cell_20_30_50(arr13);
-    
+	test_cell_20_30_50(arr14);    
 }
